@@ -8,9 +8,6 @@ Em construção
 
 - [x] Cadastro de usuário
 - [x] Edição de usuário (v 1.0)
-- [x] Cadastro de listas
-- [x] Edição de listas (v 1.0)
-- [x] Exclusão de listas
 
 ### Pré requisitos:
 
