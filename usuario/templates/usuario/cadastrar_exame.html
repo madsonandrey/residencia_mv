@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% include 'parcials/_messages.html' %}
+
+<div class="container-main">
+    <form action="{%url 'novo_exame' %}" method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+        <table class="table" style="max-width: 500px">
+            {{form}}
+            <tr>
+                <td colspan="2">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{%endblock%}

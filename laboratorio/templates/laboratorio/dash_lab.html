@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{%block content%}
+{% include 'parcials/_messages.html'%}
+
+<h1>Dashboard Laboratório</h1>
+
+<a href="{% url 'logout_lab'%}" class="btn btn-info btn-lg">
+      <span class="glyphicon glyphicon-log-out"></span> Logout
+    </a>
+{%endblock%}

@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+{% include 'parcials/_messages.html'%}
+
+<table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>CPF</th>
+          <th>E-mail</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for usuario in usuarios %}
+          <tr>
+            <td> {{ usuario.id }}</td>
+            <td>
+              <a href="#"> {{ usuario.usuario.first_name }} </a>
+            </td>
+           <td>
+              <a href="#"> {{ usuario.usuario.last_name }} </a>
+            </td>
+            <td>{{ usuario.cpf }}</td>
+            <td>{{ usuario.usuario.email }}</td>
+              <td><a href="{% url 'deletar_usuario' usuario.id %}" class="btn btn-info btn-lg">
+              <span class="glyphicon glyphicon-log-out"></span> Deletar
+            </a> </td>
+
+          </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {%for pagina in usuarios.paginator.page_range %}
+      {% if usuarios.number == pagina%}
+      <li class="page-item active">
+        <a class="page-link" href="?page={{pagina}}&termo={{ request.GET.termo }}">{{pagina}}</a>
+      </li>
+      {% else %}
+        <li class="page-item">
+        <a class="page-link" href="?page={{pagina}}&termo={{ request.GET.termo }}">{{pagina}}</a>
+      </li>
+      {% endif %}
+    {%endfor%}
+  </ul>
+</nav>
+
+{% endblock %}

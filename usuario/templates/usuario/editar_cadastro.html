@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content%}
+{%include 'parcials/_messages.html'%}
+
+<br><br>
+<div class="titulo">EDIÇÃO DE USUÁRIO CADASTRADO </div>
+<br><br>
+<div class="container">
+    <!-- Create a Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+    <table class="table">
+        <!-- form as paragraph -->
+        {{ form1.as_p }}
+        {{ form2.as_p }}
+        <tr>
+            <td colspan="2">
+            <br>
+        <input type="submit" value="Update">
+        </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{%endblock%}

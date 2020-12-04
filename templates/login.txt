@@ -1,0 +1,68 @@
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            messages.success(request, 'Você está logado')
+            return redirect('dash')
+    else:
+        messages.error(request, 'Usuário ou senha não encontrados')
+        form = AuthenticationForm()
+
+    return render(request, 'usuario/login.html', {'form': form})
+
+
+    <div class="container">
+    <form action="{%url 'login'%}" method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+        <table class="table">
+            {{form}}
+            <tr>
+                <td colspan="2">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+# Editar
+
+def editar(request, usuario_id):
+
+    obj2 = get_object_or_404(User, id=usuario_id)
+    obj = get_object_or_404(Usuario, id=usuario_id)
+
+    email = request.POST.get('email')
+    cpf = request.POST.get('cpf')
+
+    form1 = UserForm(request.POST or None, instance=obj2)
+    form2 = FormUsuario(request.POST or None, instance=obj)
+
+    if form1.is_valid() and form2.is_valid():
+        try:
+            validate_email(email)
+        except:
+            messages.error(request, 'E-mail inválido')
+            form1 = UserForm()
+            form2 = FormUsuario()
+            return render(request, 'usuario/editar_cadastro.html', {'form1': form1, 'form2': form2})
+
+        if len(cpf) != 11:
+            messages.error(request, 'CPF inválido')
+            form1 = UserForm()
+            form2 = FormUsuario()
+            return render(request, 'usuario/editar_cadastro.html', {'form1': form1, 'form2': form2})
+
+        user = form1.save(commit=False)
+        raw_password = form1.cleaned_data['senha']
+        user.set_password(raw_password)
+        if form2.is_valid():
+            usuario = form2.save(commit=False)
+            usuario.usuario = user
+            form1.save()
+            form2.save()
+
+        messages.success(request, 'Cadastro atualizado')
+        return HttpResponseRedirect('/')
+
+    return render(request, 'usuario/editar_cadastro.html', {'form1': form1, 'form2': form2})

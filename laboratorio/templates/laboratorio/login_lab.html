@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+
+<div class="container-main" >
+    <form method="POST" action="{% url 'login_lab' %}" >
+        {% csrf_token %}
+      <div class="form-group" >
+        <h1>Laboratório</h1>
+        <label>Usuário</label>
+        <input type="text" name="usuario" value="{{ request.POST.usuario }}"  class="form-control" style="color: black;">
+       </div>
+     <div class="form-group">
+        <label>Senha</label>
+        <input type="password" name="senha" class="form-control" style="color: black;">
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-bottom:10px">Entrar</button>
+    </form>
+    <div id="register-container">
+      <p>Ainda não tem uma conta?</p>
+      <a href="{% url 'cadastrar_lab'%}">Registrar</a>
+    </div>
+</div>
+
+{% endblock %}
