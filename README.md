@@ -2,7 +2,9 @@
 Projeto da residência do 3˚ Período do curso de Análise e Desenvolvimento de Sistemas da Unit-PE
 
 ### Resumo
-Trata-se de um sistema de intermediação de exames laboratoriais, onde o paciente, inicialmente, irá receber o resultado de um exame realizado, e manualmente, irá cadastrar no sistema, dessa maneira, permitindo que durante uma consulta médica, o médico tenha acesso a esses dados sem precisar que o paciente precise imprimir os mesmos.
+Trata-se de um sistema de intermediação de exames laboratoriais, onde o paciente, inicialmente, irá receber o resultado de um exame realizado, e manualmente, irá cadastrar no sistema, dessa maneira, permitindo que durante uma consulta médica o médico tenha acesso a esses dados sem precisar que o paciente precise imprimir os mesmos.
+
+![mvp1](https://media.giphy.com/media/1b1DM5qgwkx2FIWNyZ/giphy.gif)
 
 ### Status do projeto:
 Em construção
