@@ -8,6 +8,8 @@ Em construção
 
 - [x] Cadastro de usuário
 - [x] Edição de usuário (v 1.0)
+- [x] Cadastro de exame laboratorial
+- [x] Sistema de restrição de usuário(cada tipo de usuário com suas funcionalidades)
 
 ### Pré requisitos:
 
